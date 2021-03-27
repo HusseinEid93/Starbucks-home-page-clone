@@ -168,6 +168,9 @@ header {
    @include sectionBasicStyle(#d4e9e2, $dark-green, #c1d7d0);
    @extend %getApp-seePickupOptions-learnMore-seeStories;
    .text {
+      p {
+         max-width: 95%;
+      }
       @media (min-width: 768px) {
          grid-column: 2;
          grid-row: 1;
