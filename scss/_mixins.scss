@@ -1,0 +1,143 @@
+@mixin d-grid(
+   $grid-template-columns: 1fr,
+   $gap: 0,
+   $justify-items: null,
+   $align-items: null,
+   $justify-content: null,
+   $align-content: null
+) {
+   display: grid;
+   grid-template-columns: $grid-template-columns;
+   gap: $gap;
+   justify-content: $justify-content;
+   align-content: $align-content;
+   justify-items: $justify-items;
+   align-items: $align-items;
+}
+
+@mixin font($size: null, $weight: null, $family: $open-sans-font) {
+   font-size: $size;
+   font-weight: $weight;
+   font-family: $family;
+}
+
+@mixin FireFox-scrollbar {
+   scrollbar-width: thin;
+   scrollbar-color: $green transparent;
+}
+
+@mixin Chrome-scrollbar {
+   width: 8px;
+   &-track {
+      background-color: transparent;
+   }
+   &-thumb {
+      background: $green;
+      &:hover {
+         background-color: darken($green, 12);
+      }
+   }
+}
+
+@mixin button(
+   $padding,
+   $bg-color,
+   $color,
+   $overlayOnHover,
+   $border-color,
+   $border-radius: 50px
+) {
+   padding: $padding;
+   background-color: $bg-color;
+   color: $color;
+   border-radius: $border-radius;
+   border: 1px solid $border-color;
+   &:hover {
+      background-color: $overlayOnHover;
+   }
+}
+
+@mixin hamburger-menus($padding, $z-index, $box-shadow: null) {
+   transition: right 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+   @media (max-width: 767px) {
+      position: fixed;
+      z-index: $z-index;
+      top: 71px;
+      width: 80%;
+      background: $white;
+      height: 100vh;
+      right: -100%;
+      padding: $padding;
+      box-shadow: $box-shadow;
+   }
+   &.burger-active {
+      right: 0;
+   }
+}
+
+@mixin sectionBasicStyle($bg-color, $color, $buttonOverlayOnHover) {
+   background-color: $bg-color;
+   color: $color;
+   margin-bottom: 2rem;
+   @include d-grid(1fr 1fr, 0, null, center);
+   @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+   }
+   .text {
+      @include d-grid(1fr, 2rem);
+   }
+   a {
+      @include button(
+         5px 16px,
+         transparent,
+         $color,
+         $buttonOverlayOnHover,
+         $color
+      );
+      font-weight: 700;
+      @media (max-width: 575px) {
+         font-size: 0.9rem;
+      }
+   }
+
+   .image {
+      @media (max-width: 767px) {
+         grid-row: 1;
+      }
+   }
+
+   img {
+      object-fit: cover;
+   }
+}
+
+// Common style for the sections: .coconutmilk-drinks, .explore-new-finds.
+@mixin coconutmilkDrinks-exploreNewFinds {
+   @include sectionBasicStyle(#f2f0eb, $dark-green, #dcddd8);
+   .text {
+      max-width: 70%;
+      margin: 0 auto;
+      align-items: center;
+      @media (max-width: 1199px) {
+         max-width: 75%;
+      }
+      @media (max-width: 991px) {
+         max-width: 85%;
+         padding: 2rem 0;
+      }
+      @media (max-width: 767px) {
+         max-width: 95%;
+      }
+      h1 {
+         @extend %header;
+      }
+      p {
+         line-height: 1.5;
+         @include font(22px, 600);
+         @media (max-width: 575px) {
+            font-size: 22px;
+            max-width: 95%;
+         }
+      }
+   }
+}

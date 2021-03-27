@@ -1,0 +1,190 @@
+include mixins 
+doctype html 
+html(lang="en")
+   head 
+      meta(charset="UTF-8")
+      meta(
+         http-equiv="X-UA-Compatible"
+         content="IE=edge"
+      )
+      meta(
+         name="viewport"
+         content="width=device-width, initial-scale=1.0"
+      )
+      // Font awesome 
+      script(
+         src="https://kit.fontawesome.com/ 54688c9bf4.js"
+			crossorigin="anonymous"
+      )
+      link(
+         rel="stylesheet" 
+         media="all"
+         href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css"
+      )
+      link(
+         rel="stylesheet" 
+         media="all"
+         href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css"
+      )
+      link(
+         rel="stylesheet" 
+         media="all"
+         href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css"
+      )
+      //Bootstrap css file 
+      link(
+         rel="stylesheet" 
+         href="../css/bootstrap.css"
+      ) 
+      //Main css file 
+      link(
+         rel="stylesheet" 
+         href="../css/style.css"
+      ) 
+      // Tab icon 
+      link(
+         rel="shortcut icon"
+         type="image/png"
+         href="../images/icon.png"
+      )
+      title Starbucks Coffee Company
+
+   body
+      //- Include navbar.pug 
+      include navbar
+
+
+      // Start the header 
+      header
+         p.m-0.text-center.mx-auto.
+            We require facial coverings in all stores to protect the health of our customers and partners (employees), and help stop the spread of COVID-19. #[a(href="#") Learn More]
+
+
+      // Start .get-more section 
+      +sectionMarkup(
+         "Get more of what you love, for free",
+         "With Starbucks® Rewards, say hello to easy ordering, endless choice—and yes, free coffee.*",
+         "Get the app & join",
+         "../images/img1.webp"
+      )(class="get-app")
+
+
+      // Start .coconutmilk-drinks section
+      +sectionMarkup(
+         `${"let the sunshine in".toUpperCase()}`,
+         "Bright flavors shine in our Pink Drink and Pineapple Matcha Drink made with coconutmilk and ice.", 
+         "Coconutmilk drinks", 
+         "../images/img2.png"
+      )(class="coconutmilk-drinks")
+
+
+      // Start .explore-new-finds section 
+      +sectionMarkup(
+         `${"feel-good flavors".toUpperCase()}`,
+         "Say hello to our latest meatless choices, Chickpea Bites & Avocado Protein Box and Kale & Portabella Mushroom Sous Vide Egg Bites.", 
+         "Explore new finds", 
+         "../images/img3.png"
+      )(class="explore-new-finds")
+
+
+      // Start the .title section 
+      section.title  
+         h1.text-uppercase.mb-0.mx-auto.py-4.text-center more ways to discover
+
+      
+      // Start the .see-pickup-options section 
+      +sectionMarkup(
+         "Order and pick up. Easy as that.", 
+         "Just open the app, order your favorites, and enjoy contactless pay. From there, choose whichever pickup method is best for you.", 
+         "See pickup options",
+         "../images/img4.jpg"   
+      )(class="see-pickup-options")
+
+
+      // Start the .learn-more section 
+      +sectionMarkup(
+         "Earning 4,500 Bonus Stars is Super Starifying", 
+         "Earn more Stars and even more Rewards with a <strong>$0 intro annual fee for your first year</strong> with the Starbucks® Rewards Visa® Card. Plus your Stars won’t expire – an exclusive Starbucks benefit for cardmembers. Now that’s Super Starifying.**", 
+         "Learn more", 
+         "../images/img5.webp")(class="learn-more")
+
+         
+      // Start the .see-stories section 
+      +sectionMarkup(
+         "What’s happening at Starbucks",
+         "All the innovation, all the inspiration, all the connections, all the good. Find all the latest news and stories about our partners (employees), coffee and communities right here.",
+         "See the stories",
+         "../images/img6.webp"
+      )(class="see-stories")
+
+
+      // Start the details underneath the main sections 
+      .details.text-center
+         p.mx-auto.
+            *Restrictions apply. At participating stores. See #[a(href="#") starbucks.com/rewards] for details.
+
+         p.mx-auto.
+            **Under the Starbucks Rewards Program, Stars earned do not expire as long as your Starbucks® Rewards Visa® Credit Card account is open. If your Starbucks® Rewards Visa® Credit Card account is closed for any reason, your Stars will expire six (6) months after the calendar month in which that account was closed. Chase credit cards are issued by Chase Bank USA, N.A. Deposit products are provided by JPMorgan Chase Bank, N.A. Member FDIC
+
+
+      // Start the categories
+      section.categories.pt-4.pb-lg-4
+         - const headings = ["About Us", "Careers", "Social Impact", "For Business Partners", "Order and Pickup"];
+         - const list0 = ["Our Heritage", "Our Coffee", "Stories and News", "Investor Relations", "Policies and Standards", "Customer Service"];
+         - const list1 = ["Culture and Values", "Inclusion, Diversity, and Equity", "College Achievement Plan", "U.S. Careers", "International Careers"];
+         - const list2 = ["Ethical Sourcing", "Leading in Sustainability", "Strengthening Communities", "Creating Opportunities", "Global Social Impact Report"];
+         - const list3 = ["Landlord Support Center", "Suppliers", "Corporate Gift Card Sales", "Office and Foodservice Coffee"];
+         - const list4 = ["Order on the App", "Order on the Web", "Delivery", "Order and Pickup Options", "Explore and Find Coffee for Home"];
+         - const lists = [list0, list1, list2, list3, list4];
+
+
+         // For large and extra-large screens 
+         .custom-container.px-2.px-sm-0
+            .wrapper
+               - for(let i = 0; i < 5; i++)
+                  +generateCategory(headings[i], lists[i], false, "")
+
+
+            // For extra-small, small, and medium screens
+            #accordion.d-lg-none
+               - for(let i = 0; i < 5; i++)
+                  +generateCategory(headings[i], lists[i], true, `list${i}`)
+
+
+
+      // Start the footer 
+      footer 
+         .custom-container.px-2.px-sm-0
+            .socials.position-relative 
+               - const attributes = ["fa-spotify", "fa-facebook-f", "fa-pinterest-p", "fa-instagram", "fa-youtube", "fa-twitter"];
+               - for(let i = 0; i < attributes.length; i++)
+                  .wrapper.d-flex.justify-content-center.align-items-center.position-relative 
+                     .overlay.position-absolute
+                     a.d-block.text-decoration-none.position-relative(
+                        href="#"
+                     ) 
+                        i(
+                           class=`d-flex justify-content-center align-items-center w-100 h-100 fab ${attributes[i]}`
+                        )
+
+            .links
+               - const texts = ["Privacy Policy", "Terms of Use", "CA Supply Chain Act", "Submit Your Idea", "Cookie Preferences"];
+               - for(let i = 0; i < texts.length; i++)
+                  a(
+                     href="#"
+                     class="text-decoration-none"
+                  ) #{texts[i]}
+                  if i < texts.length - 1
+                     span.d-lg-block.d-none
+                  
+
+            p.mb-5.
+               &copy; 2021 Starbucks Coffee Company. All rights reserved.
+
+
+      //- Include the scripts 
+      script(src="../JS/navbar.js") 
+      script(src="../JS/jquery-3.5.1.min.js")
+      script(src="../JS/popper.min.js")
+      script(src="../JS/bootstrap.min.js")  
+      script(src="../JS/main.js") 

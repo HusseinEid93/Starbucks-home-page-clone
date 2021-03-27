@@ -1,0 +1,380 @@
+@import "variables", "mixins", "utilities";
+
+/* Start the navbar */
+// Import navbar.scss
+@import "navbar";
+
+/* Common style for the link in the header and the .text element */
+%link {
+   a {
+      color: inherit;
+      text-decoration: underline;
+      &:hover {
+         color: inherit;
+         text-decoration: none;
+      }
+   }
+}
+
+header {
+   background-color: #d4e9e2;
+   color: $dark-green;
+   padding: 2rem 0;
+   margin-bottom: 2rem;
+   p {
+      @include font(18px, 600);
+      line-height: 1.75;
+      max-width: 50%;
+      @media (max-width: 767px) {
+         max-width: 90%;
+         font-size: 16px;
+      }
+      @media (max-width: 575px) {
+         font-size: 15px;
+      }
+   }
+   @extend %link;
+}
+
+/* common style for the section: .get-app , .see-pickup-options, .learn-more, .see-stories */
+%getApp-seePickupOptions-learnMore-seeStories {
+   .text {
+      padding: 2.5rem 0;
+      max-width: 70%;
+      margin: 0 auto;
+      @media (max-width: 991px) {
+         max-width: 75%;
+      }
+      @media (max-width: 767px) {
+         max-width: 90%;
+      }
+      @media (max-width: 575px) {
+         padding: 2rem 0;
+         max-width: 95%;
+      }
+      h1 {
+         @include font(25px, 600);
+         line-height: 1.5;
+         @media (max-width: 767px) {
+            font-size: 22px;
+         }
+         @media (max-width: 575px) {
+            max-width: 90%;
+            margin: 0 auto;
+         }
+      }
+      p {
+         line-height: 1.75;
+         @include font(18px, 600);
+         @media (max-width: 767px) {
+            font-size: 15px;
+         }
+      }
+   }
+}
+
+.get-app {
+   @include sectionBasicStyle($dark-green, $white, rgba(255, 255, 255, 0.1));
+   @extend %getApp-seePickupOptions-learnMore-seeStories;
+   .image {
+      align-items: flex-end;
+      @media (max-width: 767px) {
+         grid-row: 2;
+      }
+   }
+   img {
+      @media (min-width: 992px) {
+         height: 100%;
+      }
+      @media (min-width: 768px) and (max-width: 991px) {
+         height: 80%;
+      }
+   }
+}
+
+/* Common styles for the headings of the following sections  */
+%header {
+   @include font(50px, 800);
+   line-height: 1.2;
+   letter-spacing: 2px;
+   @media (max-width: 991px) {
+      font-size: 28px;
+   }
+   @media (max-width: 575px) {
+      font-size: 25px;
+   }
+}
+
+.coconutmilk-drinks {
+   @include coconutmilkDrinks-exploreNewFinds;
+   .text {
+      @media (min-width: 992px) {
+         padding: 7rem 0;
+      }
+      @media (min-width: 768px) {
+         grid-column: 2;
+         grid-row: 1;
+      }
+   }
+   .image {
+      grid-column: 1;
+      grid-row: 1;
+      align-items: flex-start;
+   }
+}
+
+.explore-new-finds {
+   @include coconutmilkDrinks-exploreNewFinds;
+}
+
+.title {
+   margin-bottom: 2rem;
+   color: $dark-green;
+   h1 {
+      @extend %header;
+      color: $dark-green;
+      max-width: 60%;
+      @media (max-width: 767px) {
+         max-width: 80%;
+      }
+   }
+}
+
+.see-pickup-options {
+   @include sectionBasicStyle(#d4e9e2, $dark-green, #c1d7d0);
+   @extend %getApp-seePickupOptions-learnMore-seeStories;
+   .text {
+      padding: 6rem 0;
+      @media (max-width: 991px) {
+         padding: 4rem 0;
+      }
+      @media (max-width: 767px) {
+         padding: 2.5rem 0;
+      }
+   }
+   .image {
+      @media (min-width: 768px) {
+         background-image: url(../images/img4.jpg);
+         background-size: cover;
+         background-position: 20%;
+         img {
+            display: none;
+         }
+      }
+   }
+}
+
+.learn-more {
+   @include sectionBasicStyle(#d4e9e2, $dark-green, #c1d7d0);
+   @extend %getApp-seePickupOptions-learnMore-seeStories;
+   .text {
+      @media (min-width: 768px) {
+         grid-column: 2;
+         grid-row: 1;
+      }
+   }
+   .image {
+      align-items: center;
+      background-color: #f3efec;
+      grid-column: 1;
+      grid-row: 1;
+   }
+}
+
+.see-stories {
+   @include sectionBasicStyle(#213b34, $white, rgba(255, 255, 255, 0.1));
+   @extend %getApp-seePickupOptions-learnMore-seeStories;
+   img {
+      object-fit: contain;
+   }
+}
+
+.details {
+   p {
+      color: $black;
+      @include font(14px, 600);
+      line-height: 1.8;
+      max-width: 50%;
+      &:first-child {
+         margin: 4rem 0 6rem;
+         @extend %link;
+      }
+      &:last-child {
+         margin-bottom: 2rem;
+      }
+      @media (max-width: 767px) {
+         max-width: 80%;
+         font-size: 13px;
+      }
+      @media (max-width: 575px) {
+         max-width: 90%;
+      }
+   }
+}
+
+.categories {
+   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1), 0 -3px 2px rgba(0, 0, 0, 0.06);
+   .custom-container {
+      .wrapper {
+         @include d-grid(repeat(5, 1fr), 1.5rem, start);
+         max-width: 85%;
+         margin-right: auto;
+         @media (max-width: 1199px) {
+            max-width: 95%;
+         }
+         @media (max-width: 991px) {
+            display: none;
+         }
+      }
+   }
+
+   .heading-icon-wrapper {
+      margin-bottom: 2.25rem;
+      @media (max-width: 991px) {
+         cursor: pointer;
+      }
+      @media (max-width: 575px) {
+         margin-bottom: 1.5rem;
+      }
+      h5 {
+         color: $navigation-color;
+         @include font(1.15rem, 600);
+         line-height: 1.5;
+         @media (max-width: 767px) {
+            font-size: 0.97rem;
+         }
+      }
+      .icon {
+         width: 45px;
+         height: 45px;
+         &:hover .backgroundOnHover {
+            transform: scale(1);
+         }
+         .backgroundOnHover {
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: $light-grey;
+            transform: scale(0);
+            transition: 0.3s ease-out;
+         }
+         i {
+            font-size: 1.25rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            &.rotate {
+               transform: translate(-50%, -50%) rotate(180deg);
+               transition: transform 0.3s linear;
+            }
+         }
+      }
+   }
+   ul {
+      @include d-grid(1fr, 1.5rem);
+      @media (max-width: 991px) {
+         padding-bottom: 2rem;
+      }
+   }
+   a {
+      line-height: 1.5;
+      @include font(0.95rem, 600);
+      color: $grey;
+      @media (max-width: 1199px) {
+         font-size: 0.9rem;
+      }
+      @media (max-width: 575px) {
+         font-size: 0.85rem;
+      }
+      &:hover {
+         color: $navigation-color;
+      }
+   }
+}
+
+footer {
+   $dark-grey: #212121;
+   .custom-container {
+      padding-top: 2rem;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+   }
+   .socials {
+      margin-bottom: 1.75rem;
+      left: -6px;
+      @include d-grid(repeat(6, max-content));
+      .wrapper {
+         width: 47px;
+         height: 47px;
+         background-color: transparent;
+         border-radius: 50%;
+         &:hover .overlay {
+            transform: scale(1);
+         }
+         .overlay {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 50%;
+            background-color: $light-grey;
+            transform: scale(0);
+            transition: 0.3s ease-out;
+         }
+         a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            z-index: 3;
+            i {
+               border-radius: 50%;
+            }
+         }
+         &:first-child i {
+            color: $dark-grey;
+            background-color: $white;
+            font-size: 2rem;
+         }
+         &:not(:first-child) i {
+            color: $white;
+            background-color: $dark-grey;
+            font-size: 1.15rem;
+         }
+      }
+   }
+
+   .links {
+      margin-bottom: 1.75rem;
+      @include d-grid(repeat(9, max-content), 20px, start, center);
+      @media (max-width: 991px) {
+         @include d-grid(1fr, 1.5rem);
+      }
+      @media (max-width: 767px) {
+         gap: 1.25rem;
+      }
+      a {
+         @include font(0.93rem, 600);
+         color: $navigation-color;
+         &:hover {
+            text-decoration: underline !important;
+         }
+         @media (max-width: 767px) {
+            font-size: 0.9rem;
+         }
+      }
+      span {
+         height: 18px;
+         width: 2px;
+         background-color: $grey;
+      }
+   }
+
+   p {
+      color: $grey;
+      @include font(0.9rem, 600);
+      @media (max-width: 767px) {
+         font-size: 0.8rem;
+      }
+   }
+}

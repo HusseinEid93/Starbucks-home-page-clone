@@ -1,0 +1,37 @@
+mixin button(text)
+   a(href="#" class=`${linkClasses[0]}`)&attributes(attributes) #{text} 
+
+
+mixin sectionMarkup(heading, paragraph, buttonText, imgSrc)
+   section&attributes(attributes) 
+      .text.text-center 
+         h1.mb-0.
+            #{heading}
+         p.mx-auto.mb-0.
+            !{paragraph}
+         +button(buttonText)(class="mx-auto")
+      .image.h-100.d-flex
+         img(
+            src=imgSrc 
+            class="w-100"
+         )
+
+
+mixin generateCategory(heading, items, collapse, target = "")
+   .category
+      .heading-icon-wrapper.d-flex.justify-content-between.align-items-center(
+         data-toggle=collapse ? "collapse" : ""
+         data-target=`#${target}`
+      )
+         h5.m-0 #{heading}
+         .icon.position-relative.d-lg-none 
+            .backgroundOnHover.position-absolute
+            i.fas.fa-chevron-down.position-absolute
+      .list-wrapper(
+         class=collapse ? "collapse" : ""
+         id=target
+      )
+         ul.list-unstyled.m-0.p-lg-0
+            - for(let i = 0; i < items.length; i++)
+               li.m-0.p-0
+                  a(href="#" class="text-decoration-none")  #{items[i]}

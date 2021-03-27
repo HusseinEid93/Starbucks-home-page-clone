@@ -1,0 +1,54 @@
+- const linkClasses = ["text-decoration-none", "text-uppercase"];
+nav(class="navigation position-relative")
+   .custom-container.h-100    
+      .brand.my-2.my-md-0 
+         img(
+            src="../images/logo.png"
+            class="img-fluid"
+         )
+      main.d-md-flex.d-block.justify-content-md-between
+         ul.left.list-unstyled.m-0.p-0
+            - const items = ["menu", "rewards", "gift cards"];
+            - for(let i = 0; i < items.length; i++)
+               li.d-flex.justify-content-between.align-items-center
+                  a(
+                     href="#" 
+                     class=linkClasses
+                  ) #{items[i]} 
+                  if i === 0
+                     i.fas.fa-chevron-right.d-md-none
+
+         .separator.d-md-none.d-block.w-100
+
+         .right(
+            class="d-flex flex-md-row flex-column-reverse align-items-md-center"
+         )
+            a.d-flex.align-items-start.align-items-md-end.mt-4.mt-md-0(href="#" class=`${linkClasses[0]}`).
+               #[i.fas.fa-map-marker-alt.fa-1x.mr-2] 
+               Find a store 
+            .buttons
+               +button("Sign in")(class="mr-3") 
+               +button("Join now")
+
+
+      .open-close-btn(
+         class="d-block d-md-none ml-auto position-relative"
+      )
+         div(class="backgroundOnHover position-absolute")
+         .wrapper.position-relative
+            - for(let i = 1; i <= 4; i++)
+               div.position-absolute
+
+
+// Secondary hamburger menu 
+.secondary-hamburger-menu.d-block.d-md-none 
+   header.text-center.py-3.position-relative 
+      i(class="fas fa-chevron-left position-absolute").
+      span Menu 
+   ul.list-unstyled.mt-4.mb-0
+      - const listItems = ["All products", "Featured", "Previous Orders", "Favorite Products"];
+      - for (let i = 0; i < listItems.length; i++)
+         li: a(href="#" class=`${linkClasses[0]}`) #{listItems[i]}
+
+// Overlay 
+#overlay.position-fixed
