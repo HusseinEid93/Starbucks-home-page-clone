@@ -990,6 +990,10 @@ header p {
      object-fit: cover;
 }
 
+.learn-more .text p {
+  max-width: 95%;
+}
+
 @media (min-width: 768px) {
   .learn-more .text {
     -ms-grid-column: 2;
